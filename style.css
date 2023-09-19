@@ -1,0 +1,160 @@
+@import url("htts:p//fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --clr-primary-200: hsl(0, 0%, 15%);
+  --clr-primary-300: hsl(0, 0%, 10%);
+  --clr-primary-400: hsl(0, 0%, 0%);
+
+  --clr-txt-primary: #fff; /*for paragraphs*/
+  --clr-txt-secondary: hsla(0, 0%, 100%, 0.7); /*for headings*/
+
+  --fs-400: 0.875rem; /* {p tag} */
+  --fs-500: 1rem; /* { h2 in the about me section} */
+  --fs-600: 1.15rem; /* { h2 in the hero section } */
+  --fs-700: 2rem; /* { h1  in the project pages} */
+  --fs-900: clamp(3.3rem, 12vw + 1rem, 6.8rem); /* {hero text h1 size} */
+}
+
+@media (min-width: 40em) {
+  :root {
+    --fs-400: 1rem;
+    --fs-500: 1.2rem;
+    --fs-600: 1.4rem;
+    --fs-700: 3rem;
+  }
+}
+
+body {
+  height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+  font-family: "Inter", sans-serif;
+  font-size: var(--fs-400);
+  line-height: 1.5;
+  color: var(--clr-txt-secondary);
+  background-color: var(--clr-primary-400);
+  border: 2px solid #fff;
+}
+
+h1,
+h2 {
+  line-height: 1;
+  font-weight: 700;
+  color: var(--clr-txt-primary);
+}
+
+p {
+  max-width: 600px;
+}
+
+header {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  max-width: min(90%, 1000px);
+  height: 100vh;
+  margin: 0 auto;
+  padding: 4rem 0;
+  border: 2px solid red;
+}
+
+.container--narrow {
+  max-width: min(90%, 700px);
+}
+
+/* NAVBAR */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+
+  border-radius: 1rem;
+  backdrop-filter: blur(100px);
+  color: var(--clr-txt-primary);
+}
+
+.navbar--sticky {
+  background-color: hsla(0, 0%, 8%, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: min(90%, 1280px);
+  margin: 1rem auto;
+
+  animation: reveal-navbar 0.2s;
+}
+
+@keyframes reveal-navbar {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.navbar .logo {
+  width: 3ch;
+  height: 3ch;
+}
+
+.navbar nav ul {
+  display: flex;
+  gap: 3rem;
+}
+
+.navbar a {
+  color: inherit;
+  text-decoration: none;
+  /* font-size: 0.875rem; */
+}
+
+.navbar .download-CV-btn {
+  background: none;
+  border: none;
+
+  font: inherit;
+  /*   font-size: 1rem; */
+  font-weight: 500;
+  padding: 0.75rem;
+  border: 1.5px solid #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  line-height: 1;
+  background-color: #fff;
+  box-shadow: 0 0 40px 15px hsla(0, 0%, 100%, 0.3);
+
+  transition: all 0.3s;
+}
+
+.download-CV-btn:hover {
+  color: #fff;
+  background-color: #000;
+  box-shadow: 0 0 0px hsla(0, 0%, 100%, 0.3);
+}
+
+/* HERO SECTION */
+.hero-h1 {
+  font-size: var(--fs-900);
+  font-weight: 800;
+  letter-spacing: -5px;
+  max-width: 700px;
+  margin-bottom: 1rem;
+}
+
+/* the layout for big screens starts here */
+@media (min-width: 40em) {
+  section {
+    padding: 7rem 0;
+  }
+}
