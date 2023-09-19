@@ -33,7 +33,6 @@ body {
   line-height: 1.5;
   color: var(--clr-txt-secondary);
   background-color: var(--clr-primary-400);
-  border: 2px solid #fff;
 }
 
 h1,
@@ -51,8 +50,9 @@ header {
   padding: 0;
   margin: 0;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
+  /* position: relative;
+  overflow: hidden; */
+  border: 3px solid green;
 }
 
 section {
@@ -68,26 +68,30 @@ section {
 }
 
 /* NAVBAR */
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 0.5rem 0.5rem 1rem;
-
+  padding: 1rem;
   border-radius: 1rem;
-  backdrop-filter: blur(100px);
   color: var(--clr-txt-primary);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
 }
 
 .navbar--sticky {
   background-color: hsla(0, 0%, 8%, 0.7);
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   max-width: min(90%, 1280px);
   margin: 1rem auto;
+  backdrop-filter: blur(100px);
 
   animation: reveal-navbar 0.2s;
 }
@@ -106,6 +110,9 @@ section {
 .navbar .logo {
   width: 3ch;
   height: 3ch;
+  background-color: #000;
+  padding: 0.25rem;
+  border-radius: 6px;
 }
 
 .navbar nav ul {
@@ -117,14 +124,18 @@ section {
   color: inherit;
   text-decoration: none;
   /* font-size: 0.875rem; */
+  padding: 0.35rem;
+  transition: color 0.15s;
+}
+
+.navbar a:hover {
+  color: var(--clr-txt-secondary);
 }
 
 .navbar .download-CV-btn {
   background: none;
   border: none;
-
   font: inherit;
-  /*   font-size: 1rem; */
   font-weight: 500;
   padding: 0.75rem;
   border: 1.5px solid #fff;
@@ -134,7 +145,7 @@ section {
   background-color: #fff;
   box-shadow: 0 0 40px 15px hsla(0, 0%, 100%, 0.3);
 
-  transition: all 0.3s;
+  transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
 }
 
 .download-CV-btn:hover {
@@ -144,12 +155,42 @@ section {
 }
 
 /* HERO SECTION */
+
+.hero-wrapper {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4.5rem;
+}
+
 .hero-h1 {
   font-size: var(--fs-900);
   font-weight: 800;
   letter-spacing: -5px;
   max-width: 700px;
   margin-bottom: 1rem;
+}
+
+.hero-text {
+  font-size: var(--fs-600);
+  font-weight: 700;
+  color: var(--clr-txt-secondary);
+}
+
+.hero-bg-gradient {
+  width: 49.5rem;
+  height: 49.5rem;
+  position: absolute;
+  bottom: -20%;
+  left: -15%;
+  transform: skew(35deg);
+  filter: blur(100px);
+  z-index: -100;
 }
 
 /* the layout for big screens starts here */
