@@ -25,7 +25,7 @@
 }
 
 body {
-  height: 100vh;
+  /* height: 100vh; */
   max-width: 1280px;
   margin: 0 auto;
   font-family: "Inter", sans-serif;
@@ -47,17 +47,17 @@ p {
 }
 
 header {
-  padding: 0;
+  padding: 4rem 0;
   margin: 0;
-  height: 100vh;
+  /* height: 100vh; */
   position: relative;
   /* overflow: hidden; */
-  border: 3px solid transparent;
+  /* border: 3px solid green; */
 }
 
 section {
   max-width: min(90%, 1000px);
-  height: 100vh;
+  /* height: 100vh; */
   margin: 0 auto;
   padding: 4rem 0;
   border: 2px solid red;
@@ -93,7 +93,7 @@ section {
   margin: 1rem auto;
   backdrop-filter: blur(100px);
 
-  animation: reveal-navbar 0.2s;
+  animation: reveal-navbar 0.5s;
 }
 
 @keyframes reveal-navbar {
@@ -138,19 +138,20 @@ section {
   font: inherit;
   font-weight: 500;
   padding: 0.75rem;
-  border: 1.5px solid #fff;
+  border: 1.5px solid var(--clr-txt-primary);
   border-radius: 8px;
   cursor: pointer;
   line-height: 1;
-  background-color: #fff;
+  background-color: var(--clr-txt-primary);
+  color: var(--clr-primary-400);
   box-shadow: 0 0 40px 15px hsla(0, 0%, 100%, 0.3);
 
   transition: box-shadow 0.3s, background-color 0.3s, color 0.3s;
 }
 
 .download-CV-btn:hover {
-  color: #fff;
-  background-color: #000;
+  color: var(--clr-txt-primary);
+  background-color: transparent;
   box-shadow: 0 0 0px hsla(0, 0%, 100%, 0.3);
 }
 
@@ -180,6 +181,7 @@ section {
   font-size: var(--fs-600);
   font-weight: 700;
   color: var(--clr-txt-secondary);
+  /* margin-bottom: 1rem; */
 }
 
 .hero-bg-gradient {
@@ -195,7 +197,8 @@ section {
 
 /* the layout for big screens starts here */
 @media (min-width: 40em) {
-  section {
+  section,
+  header {
     padding: 7rem 0;
   }
 }
