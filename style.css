@@ -89,7 +89,7 @@ section {
   top: 0;
   left: 0;
   right: 0;
-  max-width: min(90%, 1280px);
+  max-width: min(90%, 1000px);
   margin: 1rem auto;
   backdrop-filter: blur(100px);
 
