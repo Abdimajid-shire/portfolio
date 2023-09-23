@@ -253,6 +253,10 @@ section {
     position: static;
     width: auto;
     margin-left: auto;
+
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .navbar nav ul {
