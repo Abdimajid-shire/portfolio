@@ -1,9 +1,18 @@
 "use strict";
 
-const navbar = document.querySelector(".navbar");
+const navBar = document.querySelector(".navbar");
+const navMenu = document.querySelector(".navbar nav");
+const navMenuBtn = document.querySelector(".navbar .menu-icon");
 
+// navbar scroll
 window.addEventListener("scroll", () => {
   window.scrollY > 100
-    ? navbar.classList.add("navbar--sticky")
-    : navbar.classList.remove("navbar--sticky");
+    ? navBar.classList.add("navbar--sticky")
+    : navBar.classList.remove("navbar--sticky");
+});
+
+// navbar mobile menu
+navMenuBtn.addEventListener("click", () => {
+  navMenu.classList.toggle("menu-visible");
+  console.log("hi");
 });

@@ -13,6 +13,13 @@
   --fs-600: 1.15rem; /* { h2 in the hero section } */
   --fs-700: 2rem; /* { h1  in the project pages} */
   --fs-900: clamp(3.3rem, 12vw + 1rem, 6.8rem); /* {hero text h1 size} */
+
+  /* from raycast.com */
+  --container-sm-width: 1064px;
+  --container-width: 1204px;
+  --container-lg-width: 1280px;
+  --grid-gap: 32px;
+  --navbar-width: var(--container-width);
 }
 
 @media (min-width: 40em) {
@@ -24,13 +31,23 @@
   }
 }
 
+.container {
+  max-width: min(100% - 2rem, var(--container-width));
+  margin: 0 auto;
+}
+.container--sm {
+  max-width: var(--container-sm-width);
+}
+.container--lg {
+  max-width: var(--container-lg-width);
+}
+
 html,
 body {
   overflow-x: hidden;
 }
 
 body {
-  /* height: 100vh; */
   max-width: 1280px;
   margin: 0 auto;
   font-family: "Inter", sans-serif;
@@ -38,7 +55,6 @@ body {
   line-height: 1.5;
   color: var(--clr-txt-secondary);
   background-color: var(--clr-primary-400);
-  /* border: 3px solid purple; */
 }
 
 h1,
@@ -55,33 +71,22 @@ p {
 header {
   padding: 4rem 0;
   height: 100vh;
-  margin: 0;
-  /* height: 100vh; */
   position: relative;
-  /* overflow: hidden; */
-  /* border: 3px solid green; */
 }
 
 section {
-  max-width: min(90%, 1000px);
-  /* height: 100vh; */
-  margin: 0 auto;
   padding: 4rem 0;
   border: 2px solid red;
-}
-
-.container--narrow {
-  max-width: min(90%, 700px);
 }
 
 /* NAVBAR */
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 1rem;
   align-items: center;
   padding: 1rem;
   border-radius: 1rem;
-  color: var(--clr-txt-primary);
   position: absolute;
   top: 0;
   left: 0;
@@ -90,28 +95,17 @@ section {
 }
 
 .navbar--sticky {
-  background-color: hsla(0, 0%, 10%, 0.8);
+  background-color: hsla(0, 0%, 10%, 0.7);
   padding: 0.5rem 0.5rem 0.5rem 1rem;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  max-width: min(90%, 1000px);
+  max-width: min(100% - 1rem, var(--container-sm-width));
   margin: 1rem auto;
   backdrop-filter: blur(100px);
 
   animation: reveal-navbar 0.5s;
-}
-
-@keyframes reveal-navbar {
-  0% {
-    opacity: 0;
-    transform: translateY(-100%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0%);
-  }
 }
 
 .navbar .logo {
@@ -122,26 +116,57 @@ section {
   border-radius: 6px;
 }
 
+.navbar nav {
+  position: absolute;
+  left: 0;
+  top: 4rem;
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+
+  transform: scale(0.85);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.1s, scale, 0.2s;
+}
+
+.navbar nav.menu-visible {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .navbar nav ul {
-  display: flex;
+  display: block;
   gap: 2rem;
 }
 
 .navbar a {
-  color: inherit;
+  display: block;
+  text-align: center;
+  padding: 1.5rem;
+
+  color: var(--clr-txt-secondary);
+  background-color: var(--clr-primary-300);
   text-decoration: none;
-  /* font-size: 0.875rem; */
-  padding: 0.35rem;
+  font-size: 1.125rem;
   transition: color 0.15s;
+  border-bottom: 1px solid var(--clr-primary-200);
+}
+
+.navbar li:last-of-type a {
+  border-bottom: none;
 }
 
 .navbar a:hover {
-  color: var(--clr-txt-secondary);
+  color: var(--clr-txt-primary);
+  background-color: var(--clr-primary-200);
 }
 
 .navbar .download-CV-btn {
   background: none;
   border: none;
+  margin-left: auto;
   font: inherit;
   font-weight: 500;
   padding: 0.75rem;
@@ -162,8 +187,13 @@ section {
   box-shadow: 0 0 0px hsla(0, 0%, 100%, 0.3);
 }
 
-/* HERO SECTION */
+.navbar .menu-icon {
+  display: block;
+  color: var(--clr-txt-primary);
+  padding: 0.5rem 1rem;
+}
 
+/* HERO SECTION */
 .hero-wrapper {
   height: 100%;
   width: 100%;
@@ -189,6 +219,7 @@ section {
   font-weight: 700;
   color: var(--clr-txt-secondary);
   /* margin-bottom: 1rem; */
+  max-width: 600px;
 }
 
 .hero-bg-gradient {
@@ -206,6 +237,57 @@ section {
 @media (min-width: 40em) {
   section,
   header {
-    padding: 7rem 0;
+    padding: 10rem 0;
+    height: auto;
+  }
+
+  .hero-h1 {
+    letter-spacing: -10px;
+  }
+
+  /* NAVBAR */
+  .navbar {
+    justify-content: space-between;
+  }
+  .navbar nav {
+    position: static;
+    width: auto;
+    margin-left: auto;
+  }
+
+  .navbar nav ul {
+    /* position: static; */
+    /* width: auto; */
+    display: flex;
+    background-color: transparent;
+  }
+
+  .navbar nav a {
+    border-bottom: none;
+  }
+
+  .navbar a {
+    color: var(--clr-txt-secondary);
+    text-decoration: none;
+    /* font-size: 0.875rem; */
+    padding: 0.35rem;
+    transition: color 0.15s;
+    font-size: inherit;
+    background-color: transparent;
+  }
+
+  .navbar .menu-icon {
+    display: none;
+  }
+}
+
+@keyframes reveal-navbar {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
   }
 }
