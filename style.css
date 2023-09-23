@@ -280,6 +280,10 @@ section {
     background-color: transparent;
   }
 
+  .navbar a:hover {
+    background-color: transparent;
+  }
+
   .navbar .menu-icon {
     display: none;
   }
